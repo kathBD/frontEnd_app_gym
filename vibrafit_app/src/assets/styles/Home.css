@@ -1,0 +1,335 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar-custom {
+  background-color: rgba(3, 4, 6, 0.95) !important; /* Más opaco */
+  height: 70px;
+  padding: 0 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+  font-size: 1rem;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #007bff !important;
+  transform: translateY(-2px);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+   object-fit: cover;
+  margin-right: 10px;
+}
+
+
+.home-page {
+  min-height: 100vh;
+  background-image: url("../../assets/img/gym.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Fondo fijo */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 0 0; /* 70px para la navbar */
+  margin: 0;
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 60px; /* Espacio para contenido */
+  flex: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  
+  
+}
+
+
+.main-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  line-height: 1.3;
+}
+
+.description-text {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+
+.register-button {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin: 2rem 0 3rem;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.register-button:hover {
+  background: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+/* ===== CONTENEDOR DE TARJETAS ===== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+
+.card-item {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 1rem 1rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #00b4d8;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.card-item:hover .card-icon {
+  color: #00d4ff;
+  transform: scale(1.2);
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.5px;
+}
+
+.card-text {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet (992px - 768px) */
+@media (max-width: 992px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .description-text {
+    font-size: 1.1rem;
+  }
+  
+  .register-button {
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+  
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 700px;
+    padding-bottom: 30px;
+  }
+  
+  .card-item {
+    min-height: 180px;
+    padding: 1.5rem 1.2rem;
+  }
+  
+  .card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile (768px - 576px) */
+@media (max-width: 768px) {
+  .home-page {
+    padding: 60px 0 0; /* Para navbar más pequeña */
+  }
+  
+  .navbar-custom {
+    height: 60px;
+  }
+  
+  .navbar-brand img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .main-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description-text {
+    font-size: 1rem;
+  }
+  
+  .cards-grid {
+    gap: 15px;
+    padding-bottom: 25px;
+  }
+  
+  .card-item {
+    min-height: 160px;
+    padding: 1.2rem 1rem;
+  }
+  
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile pequeño (menos de 576px) */
+@media (max-width: 576px) {
+  .main-title {
+    font-size: 1.6rem;
+  }
+  
+  .description-text {
+    font-size: 0.95rem;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+  
+  .card-item {
+    min-height: 150px;
+    padding: 1rem 0.8rem;
+  }
+  
+  .card-icon {
+    font-size: 1.8rem;
+  }
+  
+  .card-title {
+    font-size: 1rem;
+  }
+  
+  .register-button {
+    padding: 10px 30px;
+    font-size: 1rem;
+    margin: 1.2rem 0 2rem;
+  }
+}

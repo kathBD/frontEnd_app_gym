@@ -1,0 +1,439 @@
+/* src/assets/styles/Navbar.css */
+
+/* ===== ESTILOS BASE ===== */
+.navbar-custom {
+  background: linear-gradient(135deg, 
+    rgba(3, 4, 6, 0.98) 0%, 
+    rgba(10, 15, 30, 0.95) 100%
+  );
+  height: 80px;
+  padding: 0 1.5rem;
+  border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+
+.navbar-custom.scrolled {
+  height: 60px;
+  background: rgba(3, 4, 6, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== LOGO ===== */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-right: 2rem;
+}
+
+.navbar-logo {
+  width: 50px;
+  height: 50px;  
+  object-fit: cover;
+  padding: 2px;
+
+  transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+  border-color: #00d4ff;
+  transform: rotate(10deg);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #00d4ff, #007bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.5px;
+}
+
+.brand-tagline {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* ===== BOTÓN HAMBURGUESA ===== */
+.navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 0.75rem;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.navbar-toggler:hover {
+  border-color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 1.25em;
+  height: 1.25em;
+}
+
+/* ===== ENLACES DE NAVEGACIÓN ===== */
+.nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem !important;
+  margin: 0 0.25rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: #ffffff !important;
+  background: linear-gradient(45deg, rgba(0, 123, 255, 0.2), rgba(0, 212, 255, 0.2));
+  font-weight: 600;
+}
+
+/* Enlace solo con ícono (Inicio) */
+.nav-link.icon-only {
+  padding: 0.75rem !important;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  border-radius: 50% !important;
+}
+
+.nav-link.icon-only:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.nav-link.icon-only.active {
+  background: linear-gradient(45deg, #007bff, #00d4ff);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.nav-link.icon-only.active::after {
+  display: none; /* Quitar subrayado para ícono */
+}
+
+.nav-link.icon-only .fa-home {
+  font-size: 1.2rem;
+}
+
+
+.nav-link:not(.icon-only).active::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, #007bff, #00d4ff);
+  border-radius: 2px;
+}
+
+/* ===== BOTONES DE AUTENTICACIÓN ===== */
+.btn-login {
+  background: rgba(0, 123, 255, 0.15);
+  border: 1px solid rgba(0, 123, 255, 0.3);
+  color: #4dabf7 !important;
+  margin-left: 0.5rem;
+}
+
+.btn-login:hover {
+  background: rgba(0, 123, 255, 0.25);
+  border-color: #007bff;
+  color: #ffffff !important;
+}
+
+.btn-register {
+  background: linear-gradient(45deg, #007bff, #00d4ff);
+  color: white !important;
+  border: none;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+.btn-register:hover {
+  background: linear-gradient(45deg, #0056b3, #0099cc);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-logout {
+  background: rgba(220, 53, 69, 0.15);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  color: #ff6b6b !important;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.btn-logout:hover {
+  background: rgba(220, 53, 69, 0.25);
+  border-color: #dc3545;
+  color: #ffffff !important;
+}
+
+/* ===== INFORMACIÓN DE USUARIO ===== */
+.user-info {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-right: 1rem;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+}
+
+.user-role {
+  margin-top: 2px;
+}
+
+.role-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.role-badge.admin {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: white;
+}
+
+.role-badge.entrenador {
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+  color: white;
+}
+
+.role-badge.cliente {
+  background: linear-gradient(45deg, #96c93d, #00b09b);
+  color: white;
+}
+
+.role-badge.small {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+}
+
+/* Info de usuario en móvil */
+.mobile-user-info {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991.98px) {
+  .navbar-custom {
+    padding: 0 1rem;
+    height: 70px;
+  }
+  
+  .navbar-brand {
+    margin-right: auto;
+  }
+  
+  .navbar-logo {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .brand-name {
+    font-size: 1.3rem;
+  }
+  
+  .brand-tagline {
+    font-size: 0.7rem;
+  }
+  
+  /* Menú móvil */
+  .navbar-collapse {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(3, 4, 6, 0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .navbar-nav {
+    width: 100%;
+    margin: 0 !important;
+  }
+  
+  .nav-item {
+    width: 100%;
+    margin: 0.25rem 0;
+  }
+  
+  .nav-link {
+    padding: 1rem !important;
+    margin: 0;
+    border-radius: 8px;
+    justify-content: flex-start;
+  }
+  
+  /* Ícono solo en móvil */
+  .nav-link.icon-only {
+    width: 100%;
+    height: auto;
+    border-radius: 8px !important;
+    justify-content: flex-start;
+  }
+  
+  .nav-link.icon-only .fa-home {
+    margin-right: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  /* Mostrar texto en móvil para el ícono de inicio */
+  .nav-link.icon-only::after {
+    content: 'Inicio';
+    margin-left: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Botones de auth en móvil */
+  .btn-login,
+  .btn-register,
+  .btn-logout {
+    width: 100%;
+    margin: 0.5rem 0;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  
+  /* Ocultar Register duplicado */
+  .nav-item.d-md-none {
+    display: block !important;
+  }
+  
+  /* User info en móvil */
+  .user-info {
+    width: 100%;
+    margin: 1rem 0;
+    display: flex !important;
+    justify-content: flex-start;
+  }
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-collapse.show {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* ===== AJUSTES GENERALES ===== */
+body {
+  padding-top: 80px !important;
+}
+
+@media (max-width: 991px) {
+  body {
+    padding-top: 70px !important;
+  }
+}
+
+/* Tooltip para ícono solo en desktop */
+.nav-link.icon-only {
+  position: relative;
+}
+
+.nav-link.icon-only:hover::before {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-top: 0.5rem;
+  pointer-events: none;
+}
+
+.nav-link.icon-only:hover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+  margin-top: 0;
+  pointer-events: none;
+}
