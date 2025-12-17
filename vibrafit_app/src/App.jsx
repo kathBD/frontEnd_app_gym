@@ -1,32 +1,41 @@
+// src/App.jsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
-import Footer from "./components/layout/Footer";
-import UsuarioRegistro from "./components/pages/UsuarioRegistro";
-import DashboardAdmin from "./components/pages/DashboardAdmin"
+
+import DashboardAdmin from "./components/pages/DashboardAdmin.jsx"
+import DashboardCliente from "./components/pages/dashboardCliente.jsx"
+import DashboardEntrenador from "./components/pages/dashboardEntrenador.jsx";
+
 
 function App() {
   return (
-    
-     <div className="app-container">
+    <div className="app-container">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />      
-        <Route path="/Admin" element={<DashboardAdmin/>} />
-   
-        
 
+      <Routes>
+        {/* Páginas públicas */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Dashboards por rol */}
+        <Route path="/admin" element={<DashboardAdmin />} />
+        <Route path="/cliente" element={<DashboardCliente />} />
+        <Route path="/entrenador" element={<DashboardEntrenador />} />
       </Routes>
-      <Footer/>
+
+      <Footer />
     </div>
-    
   );
 }
 
 export default App;
+
 
 
 

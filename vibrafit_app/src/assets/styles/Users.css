@@ -1,0 +1,146 @@
+/* ============================
+   FONDO GENERAL DE LA PÁGINA
+   ============================ */
+
+.usuarios-container {
+    min-height: 100vh;
+    background-image: url('/img/fuerza.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 100px; /* Para no chocar con navbar */
+    color: white;
+}
+
+/* ============================
+   TÍTULO PRINCIPAL
+   ============================ */
+.usuarios-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px black;
+}
+
+/* ============================
+   ACCIONES SUPERIORES
+   ============================ */
+
+.usuarios-actions {
+    margin-bottom: 20px;
+}
+
+.btn-new-user {
+    padding: 10px 20px;
+    background-color: #28a745; /* Verde Bootstrap */
+    color: white;
+    border-radius: 6px;
+    border: none;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-new-user:hover {
+    background-color: #218838;
+    color: white;
+}
+
+/* ============================
+   FILTRO POR ROL
+   ============================ */
+
+.usuarios-filter {
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+}
+
+.usuarios-filter label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.usuarios-filter input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* ============================
+   TABLA DE USUARIOS
+   ============================ */
+
+.usuarios-table {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    overflow: hidden;
+    color: black;
+}
+
+.usuarios-table th {
+    background-color: #343a40;
+    color: white;
+    padding: 12px;
+}
+
+.usuarios-table td {
+    padding: 12px;
+}
+
+/* ============================
+   ACCIONES DE BOTONES EN TABLA
+   ============================ */
+
+.usuarios-actions-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Editar */
+.btn-edit {
+    padding: 6px 10px;
+    border-radius: 5px;
+    background-color: #0d6efd; /* Azul */
+    color: white;
+    border: none;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #0b5ed7;
+}
+
+/* Eliminar */
+.btn-delete {
+    padding: 6px 10px;
+    border-radius: 5px;
+    background-color: #dc3545; /* Rojo */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Ver */
+.btn-view {
+    padding: 6px 10px;
+    border-radius: 5px;
+    background-color: #17a2b8; /* Celeste */
+    color: white;
+    border: none;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-view:hover {
+    background-color: #117a8b;
+}

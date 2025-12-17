@@ -1,36 +1,41 @@
-import React from 'react';
-import './Sidebar.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/img/logo.jpg";
 
-function Sidebar() {
-    const menuItems = [
-        { icon: "bi bi-house-door-fill", label: "Inicio", link: "/inicio" },
-        { icon: "bi bi-people-fill", label: "Gestión de Usuarios", link: "/usuarios" },
-        { icon: "bi bi-bell-fill", label: "Notificaciones", link: "#" },
-        { icon: "bi bi-card-checklist", label: "Membresías", link: "#" }
-    ];
+const Sidebar = ({ rol }) => {
+  const menuItems = {
+    Administrador: [
+      { to: "/admin", label: "Inicio", icon: "bi-house-door-fill" },
+      { to: "/usuarios", label: "Usuarios", icon: "bi-people-fill" },
+      { to: "#", label: "Notificaciones", icon: "bi-bell-fill" },
+      { to: "#", label: "Membresías", icon: "bi-card-checklist" },
+    ],
+    Entrenador: [
+      { to: "/trainer", label: "Inicio", icon: "bi-house-door-fill" },
+      { to: "/trainer/clientes", label: "Clientes", icon: "bi-people-fill" },
+      { to: "#", label: "Notificaciones", icon: "bi-bell-fill" },
+    ],
+    Cliente: [
+      { to: "/client", label: "Inicio", icon: "bi-house-door-fill" },
+      { to: "/client/mis-clases", label: "Mis Clases", icon: "bi-calendar-event" },
+      { to: "#", label: "Notificaciones", icon: "bi-bell-fill" },
+    ],
+  };
 
-    return (
-        <div className="sidebar">
-            <div className="text-center mb-4">
-                <img src="/img/logo.jpg" alt="Logo" className="sidebar-logo" />
-                <h5 className="mt-2">VibraFit Admin</h5>
-            </div>
-            
-            {menuItems.map(function(item, index) {
-                return (
-                    <a href={item.link} key={index}>
-                        <i className={`${item.icon} me-2`}></i>{item.label}
-                    </a>
-                );
-            })}
-            
-            <form action="/logout" method="post" className="mt-4 px-3">
-                <button className="btn btn-outline-light w-100">
-                    <i className="bi bi-box-arrow-right me-1"></i> Cerrar sesión
-                </button>
-            </form>
-        </div>
-    );
-}
+  return (
+    <aside className="sidebar">
+      <div className="text-center mb-4">
+        <img src={logo} className="sidebar-logo" width={70} alt="logo" />
+        <h5>VibraFit {rol}</h5>
+      </div>
+      {menuItems[rol]?.map((item) => (
+        <Link key={item.to} to={item.to} className="sidebar-link">
+          <i className={`bi ${item.icon} me-2`}></i>
+          {item.label}
+        </Link>
+      ))}
+    </aside>
+  );
+};
 
 export default Sidebar;
