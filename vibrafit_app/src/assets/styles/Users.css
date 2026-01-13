@@ -1,146 +1,263 @@
-/* ============================
-   FONDO GENERAL DE LA PÁGINA
-   ============================ */
 
-.usuarios-container {
-    min-height: 100vh;
-    background-image: url('/img/fuerza.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding-top: 100px; /* Para no chocar con navbar */
-    color: white;
+.users-page {
+  background-image: url('/img/fuerza.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
+  color: white;
 }
 
-/* ============================
-   TÍTULO PRINCIPAL
-   ============================ */
-.usuarios-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 25px;
-    text-shadow: 1px 1px 3px black;
+/* Navbar */
+.navbar-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 10px 0;
 }
 
-/* ============================
-   ACCIONES SUPERIORES
-   ============================ */
-
-.usuarios-actions {
-    margin-bottom: 20px;
+.navbar-custom .navbar-brand {
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
-.btn-new-user {
-    padding: 10px 20px;
-    background-color: #28a745; /* Verde Bootstrap */
-    color: white;
-    border-radius: 6px;
-    border: none;
-    text-decoration: none;
-    transition: 0.2s;
+.logo-img {
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.btn-new-user:hover {
-    background-color: #218838;
-    color: white;
+/* Contenedor principal */
+.users-container {
+  margin: 15px 20px 5px 15px;
+  padding: 20px;
 }
 
-/* ============================
-   FILTRO POR ROL
-   ============================ */
+.users-container h2 {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 45px;
+}
 
-.usuarios-filter {
-    margin-bottom: 20px;
-    background: rgba(0, 0, 0, 0.45);
+/* Botones */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 8px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+  transform: translateY(-2px);
+}
+
+/* Formulario de filtro */
+.filter-form {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  max-width: 500px;
+}
+
+.filter-form .form-label {
+  color: white;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.filter-form .form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.filter-form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  background-color: white;
+}
+
+/* Mensaje de filtro */
+.filter-message {
+  background-color: rgba(23, 162, 184, 0.1);
+  border: 1px solid #17a2b8;
+  color: #17a2b8;
+  max-width: 500px;
+}
+
+/* Tabla */
+.users-table {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.users-table thead {
+  background-color: #343a40;
+}
+
+.users-table thead th {
+  color: white;
+  border: none;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.users-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.users-table tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.users-table tbody td {
+  padding: 15px;
+  vertical-align: middle;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Celdas de acciones */
+.actions-cell {
+  white-space: nowrap;
+}
+
+.actions-cell .btn {
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.actions-cell .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+/* Mensaje sin usuarios */
+.no-users-message {
+  background-color: rgba(255, 193, 7, 0.1);
+  border: 1px solid #ffc107;
+  color: #ffc107;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .users-container {
+    margin-top: 70px;
     padding: 15px;
-    border-radius: 8px;
-    color: white;
-}
-
-.usuarios-filter label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.usuarios-filter input {
-    width: 100%;
+  }
+  
+  .users-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-custom .navbar-brand {
+    font-size: 1.1rem;
+  }
+  
+  .logo-img {
+    width: 35px;
+  }
+  
+  .users-table {
+    font-size: 14px;
+  }
+  
+  .users-table tbody td {
     padding: 10px;
-    border-radius: 6px;
-    border: none;
+  }
+  
+  .actions-cell .btn {
+    padding: 5px 8px;
+    font-size: 12px;
+    margin: 2px;
+  }
+  
+  .filter-form {
+    padding: 15px;
+  }
 }
 
-/* ============================
-   TABLA DE USUARIOS
-   ============================ */
-
-.usuarios-table {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    overflow: hidden;
-    color: black;
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.usuarios-table th {
-    background-color: #343a40;
-    color: white;
-    padding: 12px;
+.users-table tbody tr {
+  animation: fadeIn 0.5s ease forwards;
 }
 
-.usuarios-table td {
-    padding: 12px;
+.users-table tbody tr:nth-child(odd) {
+  animation-delay: 0.1s;
 }
 
-/* ============================
-   ACCIONES DE BOTONES EN TABLA
-   ============================ */
-
-.usuarios-actions-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-/* Editar */
-.btn-edit {
-    padding: 6px 10px;
-    border-radius: 5px;
-    background-color: #0d6efd; /* Azul */
-    color: white;
-    border: none;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-.btn-edit:hover {
-    background-color: #0b5ed7;
-}
-
-/* Eliminar */
-.btn-delete {
-    padding: 6px 10px;
-    border-radius: 5px;
-    background-color: #dc3545; /* Rojo */
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-delete:hover {
-    background-color: #c82333;
-}
-
-/* Ver */
-.btn-view {
-    padding: 6px 10px;
-    border-radius: 5px;
-    background-color: #17a2b8; /* Celeste */
-    color: white;
-    border: none;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-.btn-view:hover {
-    background-color: #117a8b;
+.users-table tbody tr:nth-child(even) {
+  animation-delay: 0.2s;
 }

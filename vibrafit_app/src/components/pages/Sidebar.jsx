@@ -1,40 +1,70 @@
+// components/pages/Sidebar.jsx - VERSIÓN DINÁMICA
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/img/logo.jpg";
+import "../../assets/styles/Sidebar.css";
 
-const Sidebar = ({ rol }) => {
-  const menuItems = {
-    Administrador: [
-      { to: "/admin", label: "Inicio", icon: "bi-house-door-fill" },
-      { to: "/usuarios", label: "Usuarios", icon: "bi-people-fill" },
-      { to: "#", label: "Notificaciones", icon: "bi-bell-fill" },
-      { to: "#", label: "Membresías", icon: "bi-card-checklist" },
-    ],
-    Entrenador: [
-      { to: "/trainer", label: "Inicio", icon: "bi-house-door-fill" },
-      { to: "/trainer/clientes", label: "Clientes", icon: "bi-people-fill" },
-      { to: "#", label: "Notificaciones", icon: "bi-bell-fill" },
-    ],
-    Cliente: [
-      { to: "/client", label: "Inicio", icon: "bi-house-door-fill" },
-      { to: "/client/mis-clases", label: "Mis Clases", icon: "bi-calendar-event" },
-      { to: "#", label: "Notificaciones", icon: "bi-bell-fill" },
-    ],
+const Sidebar = ({ rol, onLogout }) => {
+  // Obtener enlaces según el rol
+  const getMenuItems = () => {
+    const baseItems = [
+      { to: "/", icon: "fas fa-home", label: "Inicio" },
+    ];
+
+    switch (rol) {
+      case "Administrador":
+        return [
+          ...baseItems,
+          { to: "/admin", icon: "fas fa-tachometer-alt", label: "Dashboard" },
+          { to: "/usuarios", icon: "fas fa-users", label: "Usuarios" },
+          { to: "/admin/reportes", icon: "fas fa-chart-bar", label: "Reportes" },
+          { to: "/admin/config", icon: "fas fa-cog", label: "Configuración" },
+        ];
+      
+      case "Entrenador":
+        return [
+          ...baseItems,
+          { to: "/entrenador", icon: "fas fa-tachometer-alt", label: "Dashboard" },
+          { to: "/trainer/clientes", icon: "fas fa-user-friends", label: "Mis Clientes" },
+          { to: "/trainer/rutinas", icon: "fas fa-dumbbell", label: "Rutinas" },
+          { to: "/trainer/horarios", icon: "fas fa-calendar-alt", label: "Horarios" },
+        ];
+      
+      case "Cliente":
+      default:
+        return [
+          ...baseItems,
+          { to: "/cliente", icon: "fas fa-tachometer-alt", label: "Dashboard" },
+          { to: "/client/rutinas", icon: "fas fa-dumbbell", label: "Mis Rutinas" },
+          { to: "/client/progreso", icon: "fas fa-chart-line", label: "Mi Progreso" },
+          { to: "/client/perfil", icon: "fas fa-user-circle", label: "Mi Perfil" },
+          { to: "/client/planes", icon: "fas fa-cash-coin", label: "Mis Planes" },
+        ];
+    }
   };
 
   return (
-    <aside className="sidebar">
-      <div className="text-center mb-4">
-        <img src={logo} className="sidebar-logo" width={70} alt="logo" />
-        <h5>VibraFit {rol}</h5>
+    <div className="sidebar">
+   
+      <div className="sidebar-menu">
+        {getMenuItems().map((item, index) => (
+          <Link 
+            key={index} 
+            to={item.to} 
+            className="sidebar-item"
+          >
+            <i className={item.icon}></i>
+            <span>{item.label}</span>
+          </Link>
+        ))}
       </div>
-      {menuItems[rol]?.map((item) => (
-        <Link key={item.to} to={item.to} className="sidebar-link">
-          <i className={`bi ${item.icon} me-2`}></i>
-          {item.label}
-        </Link>
-      ))}
-    </aside>
+      
+      <div className="sidebar-footer">
+        <button onClick={onLogout} className="btn-logout-sidebar">
+          <i className="fas fa-sign-out-alt"></i>
+          <span>Cerrar Sesión</span>
+        </button>
+      </div>
+    </div>
   );
 };
 

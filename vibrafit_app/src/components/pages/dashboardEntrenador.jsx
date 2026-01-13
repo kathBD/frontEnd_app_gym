@@ -1,7 +1,8 @@
-// src/components/pages/trainer/DashboardTrainer.jsx
+
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../assets/styles/DashboardAdmin.css"; // Reutilizamos estilos
+import "../../assets/styles/DashboardAdmin.css";
+import Sidebar from "./Sidebar";
 
 const DashboardEntrenador  = () => {
   return (

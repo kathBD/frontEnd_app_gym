@@ -1,28 +1,21 @@
-import React, { useContext } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import Sidebar from "./Sidebar";
-import AuthContext from "../../context/AuthContext";
-import "../../assets/styles/DashboardLayout.css";
+import React from 'react';
+import Sidebar from './Sidebar';
 
-const DashboardLayout = () => {
-  const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
+const DashboardLayout = ({ children }) => {
   return (
-    <div className="dashboard-layout">
-      <Sidebar rol={user?.rol} onLogout={handleLogout} />
-      <main className="main-content">
-        <Outlet />
-      </main>
+    <div className="dashboard-container" style={{ display: 'flex', minHeight: '100vh' }}>
+      <Sidebar />
+      
+      <div className="main-content" style={{ 
+        flex: 1, 
+        padding: '20px',
+        marginLeft: '250px', 
+        backgroundColor: '#f8f9fa'
+      }}>
+        {children}
+      </div>
     </div>
   );
 };
 
 export default DashboardLayout;
-
-

@@ -1,49 +1,89 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import logo from "../../assets/img/logo.jpg";
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext'; // Importa useAuth
+import '../../assets/styles/Sidebar.css'; 
 
-const Sidebar = ({ rol, onLogout }) => {
+const Sidebar = () => {
+  const navigate = useNavigate();
+  const { user, logout } = useAuth(); // Obtiene user y logout del contexto
+  
+  // Determina userType basado en el rol del usuario
+  const userType = user?.rol?.nombre?.toLowerCase() || 'admin';
+  
+  // Configuración según tipo de usuario
   const menuItems = {
-    Administrador: [
-      { to: "/admin", label: "Inicio", icon: "bi-house-door-fill" },
-      { to: "/usuarios", label: "Usuarios", icon: "bi-people-fill" },
-      { to: "#", label: "Notificaciones", icon: "bi-bell-fill" },
-      { to: "#", label: "Membresías", icon: "bi-card-checklist" },
+    administrador: [
+      { path: '/admin', icon: 'bi-house-door-fill', label: 'Inicio' },
+      { path: '/usuarios', icon: 'bi-people-fill', label: 'Gestión de Usuarios' },
+      { path: '/admin/notificaciones', icon: 'bi-bell-fill', label: 'Notificaciones' },
+      { path: '/admin/membresias', icon: 'bi-card-checklist', label: 'Membresías' },
     ],
-    Entrenador: [
-      { to: "/trainer", label: "Inicio", icon: "bi-house-door-fill" },
+    cliente: [
+      { path: '/cliente', icon: 'bi-house-door-fill', label: 'Inicio' },
+      { path: '/cliente/rutinas', icon: 'bi-calendar-check', label: 'Mis Rutinas' },
+      { path: '/cliente/estadisticas', icon: 'bi-graph-up', label: 'Estadísticas' },
+      { path: '/cliente/perfil', icon: 'bi-person-circle', label: 'Mi Perfil' },
     ],
-    Cliente: [
-      { to: "/client", label: "Inicio", icon: "bi-house-door-fill" },
-    ],
+    entrenador: [
+      { path: '/entrenador', icon: 'bi-house-door-fill', label: 'Inicio' },
+      { path: '/entrenador/clientes', icon: 'bi-people-fill', label: 'Mis Clientes' },
+      { path: '/entrenador/rutinas', icon: 'bi-clipboard-plus', label: 'Crear Rutinas' },
+      { path: '/entrenador/calendario', icon: 'bi-calendar-week', label: 'Calendario' },
+    ]
   };
 
+  const handleLogout = () => {
+    logout(); // Usa logout del contexto
+    navigate('/login');
+  };
+
+  // Verifica que haya menú para el userType
+  const currentMenu = menuItems[userType] || menuItems.administrador;
+
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header text-center">
-        <img src={logo} className="sidebar-logo" alt="logo" />
-        <h5>VibraFit {rol}</h5>
+    <div className="sidebar">
+      <div className="text-center mb-4">
+      
+        <h5 className="mt-2 sidebar-title">
+          {userType === 'administrador' ? 'VibraFit Admin' : 
+           userType === 'cliente' ? 'Mi Espacio' : 
+           'Panel Entrenador'}
+        </h5>
+        {user && (
+          <div className="user-info">
+            <p className="mb-0"><strong>{user.nombre}</strong></p>
+            <small>{user.correo}</small>
+          </div>
+        )}
       </div>
-
-      <nav className="sidebar-nav">
-        {menuItems[rol]?.map((item) => (
-          <NavLink key={item.to} to={item.to} className="sidebar-link">
-            <i className={`bi ${item.icon}`}></i>
-            <span>{item.label}</span>
-          </NavLink>
-        ))}
-      </nav>
-
-      <div className="logout-section px-3">
-        <button className="btn btn-outline-light w-100" onClick={onLogout}>
-          <i className="bi bi-box-arrow-right me-2"></i>
+      
+      {/* Menú dinámico según rol */}
+      {currentMenu.map((item) => (
+        <NavLink 
+          key={item.path}
+          to={item.path}
+          className={({ isActive }) => 
+            `sidebar-link ${isActive ? 'active' : ''}`
+          }
+          end
+        >
+          <i className={`bi ${item.icon} me-2`}></i>
+          {item.label}
+        </NavLink>
+      ))}
+      
+      {/* Botón de logout */}
+      <div className="mt-4 px-3">
+        <button 
+          onClick={handleLogout}
+          className="btn btn-outline-light w-100 logout-btn"
+        >
+          <i className="bi bi-box-arrow-right me-1"></i> 
           Cerrar sesión
         </button>
       </div>
-    </aside>
+    </div>
   );
 };
 
 export default Sidebar;
-
-
